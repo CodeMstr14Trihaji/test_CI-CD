@@ -6,8 +6,8 @@ int main(){
     cout << "Hello World" << endl;
     // meminta nama dari user, dan lalu menampilkanya kembali
     string nama;
-    cout << "Masukkan nama anda: "
+    cout << "Masukkan nama anda: ";
     cin >> nama;
-    cout << "Halo, " << nama << endl
+    cout << "Halo, " << nama << endl;
     return 0;
 }
