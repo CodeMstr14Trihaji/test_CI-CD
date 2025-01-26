@@ -16,19 +16,19 @@ all: $(TARGET)
 
 # Aturan untuk membuat target
 $(TARGET): $(OBJS)
-    $(CXX) $(CXXFLAGS) -o $@ $^
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 # Aturan untuk membuat file objek
 %.o: %.cpp
-    $(CXX) $(CXXFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 # Aturan untuk menjalankan tes
 test: $(TARGET)
-    ./$(TARGET) # Ganti dengan perintah untuk menjalankan tes Anda
+	./$(TARGET) # Ganti dengan perintah untuk menjalankan tes Anda
 
 # Aturan untuk membersihkan file objek dan target
 clean:
-    rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJS) $(TARGET)
 
 # Aturan phony untuk menghindari konflik dengan file bernama sama
 .PHONY: all clean test
