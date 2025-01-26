@@ -2,7 +2,7 @@
 TARGET = main
 
 # Daftar file sumber
-SRCS = main.cpp other_file.cpp
+SRCS = main.cpp other_file.cpp baru.cpp
 
 # Compiler dan flags
 CXX = g++
