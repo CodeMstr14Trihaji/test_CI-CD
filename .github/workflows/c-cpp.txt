@@ -1,0 +1,30 @@
+name: Validate Code
+
+on:
+  push:
+    branches:
+      - main # Jalankan workflow setiap ada push ke branch "main"
+  pull_request:
+    branches:
+      - main # Jalankan juga untuk pull request ke branch "main"
+
+jobs:
+  validate-code:
+    runs-on: ubuntu-latest # Jalankan di sistem operasi Linux
+
+    steps:
+      # 1. Checkout kode dari repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Install compiler untuk C++
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y g++ make
+
+      # 3. Kompilasi kode
+      - name: Compile code
+        run: make
+
+      # 4. Jalankan tes (jika ada)
+      - name: Run tests
+        run: make test
