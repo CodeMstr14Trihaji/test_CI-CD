@@ -15,4 +15,10 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - name: Compile C++ Code
+        run: |
+          g++ -o program main.cpp
+      - name: Run Program
+        run: ./program
+
       - run: echo "🍏 This job's status is ${{ job.status }}."
