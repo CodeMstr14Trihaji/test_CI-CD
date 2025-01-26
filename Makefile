@@ -1,15 +1,11 @@
-# Nama file output
-TARGET = main
-
-# Daftar file sumber
-SRCS = main.cpp other_file.cpp baru.cpp
-
 # Compiler dan flags
 CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
-# Daftar file objek
+# Cari semua file .cpp di direktori saat ini
+SRCS = $(wildcard *.cpp)
 OBJS = $(SRCS:.cpp=.o)
+TARGET = program
 
 # Aturan default untuk kompilasi
 all: $(TARGET)
@@ -22,9 +18,9 @@ $(TARGET): $(OBJS)
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Aturan untuk menjalankan tes
+# Aturan untuk menjalankan program
 test: $(TARGET)
-	./$(TARGET) # Ganti dengan perintah untuk menjalankan tes Anda
+	./$(TARGET)
 
 # Aturan untuk membersihkan file objek dan target
 clean:
