@@ -21,14 +21,19 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       
-      # Langkah 4: Kompilasi Semua File C++ (dengan shell command yang benar)
-      - name: Compile C++ Code
+      # Langkah 4: Temukan dan Kompilasi Semua File C++ dengan main()
+      - name: Compile and run C++ Code
         run: |
-          g++ -o program $(find . -name "*.cpp")
+          # Temukan semua file .cpp yang diubah
+          files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.cpp$')
+          for file in $files; do
+            # Jika file mengandung main(), kompilasi dan jalankan
+            if grep -q 'int main' "$file"; then
+              echo "🎯 Compiling and running $file"
+              g++ -o program "$file"
+              ./program
+            fi
+          done
       
-      # Langkah 5: Jalankan Program
-      - name: Run Program
-        run: ./program
-
-      # Langkah 6: Status pekerjaan
+      # Langkah 5: Status pekerjaan
       - run: echo "🍏 This job's status is ${{ job.status }}."

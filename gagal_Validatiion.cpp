@@ -7,9 +7,9 @@ int main() {
 
     // memina nama dari user, dan menampilkanya kembali ke layar
     string nama;
-    cout << "Masukkan nama anda: ";
+    cout << "Masukkan nama anda: "
     cin >> nama;
-    cout << "Nama anda adalah: " << nama;
+    cout << "Nama anda adalah: "  nama;
 
     return 0;
 }
