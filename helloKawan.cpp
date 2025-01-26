@@ -9,9 +9,9 @@ int main() {
 
     // mengecek apakah angka tersebut genap atau ganjil
     if (angka % 2 == 0) {
-        cout << angka << " adalah angka genap"
+        cout << angka << " adalah angka genap";
     } else {
-        cout << angka < " adalah angka ganjil";
+        cout << angka << " adalah angka ganjil";
     }
 
     return 0;
