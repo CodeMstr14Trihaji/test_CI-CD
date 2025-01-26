@@ -1,20 +1,22 @@
-name: C++ CI
+name: C++ Independent File Tests
 
 on: [push, pull_request]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Set up C++ Compiler
-        run: sudo apt-get install g++
+    - name: Set up C++ environment
+      run: sudo apt-get install g++ make
 
-      - name: Compile Code
-        run: g++ -o program $(find . -name "*.cpp")
-
-      - name: Run Tests
-        run: ./program
+    - name: Compile and run each C++ file
+      run: |
+        for file in *.cpp; do
+          executable="${file%.cpp}"
+          g++ -Wall -Wextra -std=c++17 "$file" -o "$executable"
+          ./"$executable"
+        done
